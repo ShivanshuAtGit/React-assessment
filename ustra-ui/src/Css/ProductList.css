@@ -1,0 +1,20 @@
+.List{
+    border: 1px solid black;
+}
+
+.List__items{
+    border-bottom: 1px solid rgb(170, 170, 170);
+    margin: 1rem;
+    padding: 1rem;
+    min-height: 12rem;
+    display: flex;
+}
+
+.List__image-block{
+    min-width: 30%;
+    background-color: wheat;
+}
+
+.List__detail-block{
+    min-width: 70%;
+}

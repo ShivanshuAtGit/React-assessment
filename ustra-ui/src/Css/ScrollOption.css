@@ -1,0 +1,16 @@
+.Scroll__box{
+    max-height: 10rem;
+    border: 1px solid black;
+    margin: 1rem 0;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.Scroll__cat{
+    height: 6rem;
+    margin: 1rem;
+    min-width: 9rem;
+    border-radius: .2rem;
+    border: 1px solid black;
+}

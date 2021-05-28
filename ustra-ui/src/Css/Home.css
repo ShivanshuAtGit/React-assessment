@@ -1,0 +1,11 @@
+.Home{
+    padding: 1rem;
+    color: black;
+}
+
+.Home__heading{
+    padding: .5rem;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
