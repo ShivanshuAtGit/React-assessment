@@ -1,16 +1,28 @@
 .Scroll__box{
     max-height: 10rem;
-    border: 1px solid black;
-    margin: 1rem 0;
+    padding: 1rem 0;
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
 }
 
-.Scroll__cat{
+.Scroll__cat,
+.Scroll__cat:link{
+    text-decoration: none;
     height: 6rem;
     margin: 1rem;
     min-width: 9rem;
     border-radius: .2rem;
-    border: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.171);
+    padding: 2rem 1rem 1rem 1rem;
+    text-align: center;
+    background-size: cover;
+
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 300;
+}
+
+.selected{
+    color: wheat;
 }
