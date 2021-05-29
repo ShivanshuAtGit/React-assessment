@@ -1,12 +1,11 @@
-.List{
-    border: 1px solid black;
-}
+/* .List{
+} */
 
 .List__items{
     border-bottom: 1px solid rgb(170, 170, 170);
     margin: 1rem;
     padding: 1rem;
-    min-height: 12rem;
+    min-height: 13rem;
     display: flex;
 }
 
@@ -17,4 +16,44 @@
 
 .List__detail-block{
     min-width: 70%;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.product__rating{
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    color: rgb(139, 139, 139);
+    font-size: 1.5rem;
+}
+
+.product__name{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.product__weigh{
+    color: rgb(146, 146, 146);
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.product__mrp{
+    font-size: 1.4rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.button{
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: 	rgb(78, 208, 99);
+    color: white;
+    padding: 1rem 1.5rem;
+    border: none;
+    margin: .5rem 0 0 0;
+}
+
+.button:focus{
+    outline: none;
 }

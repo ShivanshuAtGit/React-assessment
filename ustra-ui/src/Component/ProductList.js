@@ -36,11 +36,11 @@ class ProductList extends Component {
                 return (<div className='List__items' key={data.image}>
                     <div className='List__image-block'></div>
                     <div className='List__detail-block'>
-                        <h2>{data.name}</h2>
-                        <p>{data.weigh}</p>
-                        <h3>{`Rs. ${data.mrp}`}</h3>
-                        <span>{data.rating}</span>
-                        <button>ADD TO CARD</button>
+                        <span className='product__rating'>{data.rating}</span>
+                        <h2 className='product__name'>{data.name}</h2>
+                        <p className='product__weigh'>{`(${data.weigh})`}</p>
+                        <h3 className='product__mrp'>{`Rs. ${data.mrp}`}</h3>
+                        <button className='button'>ADD TO CART</button>
                     </div>
 
                 </div>)
