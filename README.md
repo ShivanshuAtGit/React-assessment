@@ -8,7 +8,7 @@
 
 ```bash
  cd ustra-ui
- npm run  start
+ npm start
 ```
 
 so that you can run the code.
