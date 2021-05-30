@@ -27,7 +27,8 @@
 
 .product__rating{
     position: absolute;
-    right: 0;
+    top: 5rem;
+    right: 1rem;
     display: inline-block;
     color: rgb(139, 139, 139);
     font-size: 1.5rem;
@@ -116,8 +117,8 @@
   }
   
   .dd-button {
+    color: rgb(146, 145, 145);
     display: inline-block;
-    border: 1px solid gray;
     border-radius: 4px;
     padding: 1rem 1.5rem;
     background-color: #ffffff;
@@ -125,18 +126,6 @@
     white-space: nowrap;
   }
   
-  /* .dd-button:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    width: 0; 
-    height: 0; 
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid black;
-  } */
   
   .dd-button:hover {
     background-color: #eeeeee;
@@ -180,7 +169,12 @@
 
   .link{
       text-decoration: none;
-      color: rgb(59, 59, 59);
+      color: rgb(107, 107, 107);
+  }
+
+  .dd_select{
+      color: black;
+        font-weight: 500;
   }
     
 

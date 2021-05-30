@@ -156,9 +156,9 @@ class ProductList extends Component {
                                 </div>
 
                                 <div className='List__detail-block'>
-                                    <span className='product__rating'>{(data.rating === undefined) ? "" : data.rating.textContent}</span>
+                                {data.rating !== undefined ? <span className='product__rating'>{data.rating.textContent} &#11088;</span>: <span></span> }
                                     <h2 className='product__name'>{data.name}</h2>
-                                    <p className='product__weigh'>{`(${data.weight} ${data.weight_unit})`}</p>
+                                    {data.weight !== '0' ? <p className='product__weigh'>{`(${data.weight} ${data.weight_unit})`}</p>: <span></span> }
                                     <h3 className='product__mrp'>{`Rs. ${data.final_price}`}<span >{data.price}</span></h3>
                                     <button className='button'>ADD TO CART</button>
                                 </div>
@@ -179,7 +179,7 @@ class ProductList extends Component {
                                     <ul className="dd-menu" >
                                         {this.state.catList.map((data) => {
                                             return <li  value={data.category_id} key={data.category_id}>
-                                                <NavLink className='link' to={`/${data.category_id}`}>{data.category_name}</NavLink>
+                                                <NavLink className='link' activeClassName='dd_select' to={`/${data.category_id}`}>{data.category_name}</NavLink>
                                             </li >
                                         })}
                                     </ul>
@@ -225,9 +225,9 @@ class ProductList extends Component {
                                 </div>
 
                                 <div className='List__detail-block'>
-                                    <span className='product__rating'>{data.rating}</span>
+                                    {data.rating !== undefined ? <span className='product__rating'>{data.rating} &#11088;</span>: <span></span> }
                                     <h2 className='product__name'>{data.name}</h2>
-                                    <p className='product__weigh'>{`(${data.weight} ${data.weight_unit})`}</p>
+                                    {data.weight !== 0 ? <p className='product__weigh'>{`(${data.weight} ${data.weight_unit})`}</p>: <span></span> }
                                     <h3 className='product__mrp'>{`Rs. ${data.final_price}`}<span >{data.price}</span></h3>
                                     <button className='button'>ADD TO CART</button>
                                 </div>
@@ -247,7 +247,7 @@ class ProductList extends Component {
                                     <ul className="dd-menu" >
                                         {this.state.catList.map((data) => {
                                             return <li  value={data.category_id} key={data.category_id}>
-                                                <NavLink className='link' to={`/${data.category_id}`}>{data.category_name}</NavLink>
+                                                <NavLink className='link' activeClassName='dd_select' to={`/${data.category_id}`}>{data.category_name}</NavLink>
                                             </li >
                                         })}
                                     </ul>

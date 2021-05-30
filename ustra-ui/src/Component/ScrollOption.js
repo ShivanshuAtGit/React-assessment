@@ -10,6 +10,8 @@ class ScrollOption extends Component{
             catList : this.props.list
         }
     }
+
+    
     
     render(){
 

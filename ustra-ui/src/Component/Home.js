@@ -25,7 +25,16 @@ class Home extends Component{
                         processing : false
         })
 
-        console.log(response)
+
+        let arr=[];
+
+        response.data.category_list.map((data)=>{
+                let id = data.category_id
+                arr.push([id , data.category_name]);
+            // console.log(data)
+        })
+
+        console.log(arr[0][0])
 
     }
 

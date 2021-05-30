@@ -2,10 +2,42 @@
     padding: 1rem;
     color: black;
     letter-spacing: 1px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.39);
+    border-radius: 5px;
 }
 
 .Home__heading{
-    padding: .5rem;
+    padding: .5rem 2rem;
     font-size: 2rem;
     font-weight: 500;
+    color: white;
+    background-color: rgb(61, 61, 61);
+    border-radius: 2rem .5rem .5rem 2rem;
 }
+
+
+@media only screen and (min-width: 450px) {
+    .Home{
+        width: 90%;
+        margin: 2rem auto;
+    }
+  }
+
+
+  @media only screen and (min-width: 600px) {
+    .Home{
+        width: 80%;
+    }
+  }
+
+  @media only screen and (min-width: 750px) {
+    .Home{
+        width: 75%;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    .Home{
+        width: 70%;
+    }
+  }
