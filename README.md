@@ -7,7 +7,7 @@
 3. Check the npm package
 
 ```bash
- cd ustra-ui
+ cd React-assessment/ustra-ui
  npm install
  npm start
 ```
