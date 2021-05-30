@@ -186,13 +186,24 @@
 }
 
 .view{
+    font-size: 1rem;
     border: none;
     padding: 1rem 1.5rem;
     border-radius: 2px;
     background-color: rgb(255, 255, 255);
     color: rgb(68, 68, 68);
+    transition: all 250ms;
+}
+
+.view:hover{
+  transform: translateY(-.2rem) scale(1.01);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.212);
 }
 
 .view:focus{
     outline: none;
+}
+
+.view:active{
+    transform: translateY(.2rem) scale(.99);
 }
