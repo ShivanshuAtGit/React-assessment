@@ -8,6 +8,7 @@
 
 ```bash
  cd ustra-ui
+ npm install
  npm start
 ```
 
