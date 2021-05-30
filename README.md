@@ -1,9 +1,10 @@
 # React-assessment
 
 ## Environment Setup
-You can use VS Code or any code editor and install NodeJs follow the instructions:
 
- ### After cloning the React-assessment repo.
+1. Install Vs code or any other code editor
+2. Install NodeJs
+3. Check the npm package
 
 ```bash
  cd ustra-ui
