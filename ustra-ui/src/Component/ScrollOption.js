@@ -15,7 +15,7 @@ class ScrollOption extends Component{
 
         return <div className='Scroll__box'>
             {this.state.catList.map((data)=>{
-               return <NavLink to={`\_${data.category_id}`} activeClassName='selected' className='Scroll__cat' style={{backgroundImage: `url(${data.category_image})`}} key={data.category_id}>
+               return <NavLink to={`/${data.category_id}`} activeClassName='selected' className='Scroll__cat' style={{backgroundImage: `url(${data.category_image})`}} key={data.category_id}>
                    {data.category_name}
                </NavLink >
             })}

@@ -1,5 +1,5 @@
 .Scroll__box{
-    max-height: 10rem;
+    max-height: 12rem;
     padding: 1rem 0;
     display: flex;
     overflow-x: auto;
@@ -9,12 +9,12 @@
 .Scroll__cat,
 .Scroll__cat:link{
     text-decoration: none;
-    height: 6rem;
+    height: 7rem;
     margin: 1rem;
-    min-width: 9rem;
+    min-width: 11rem;
     border-radius: .2rem;
     background-color: rgba(0, 0, 0, 0.171);
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 2.5rem 1rem 1rem 1rem;
     text-align: center;
     background-size: cover;
 

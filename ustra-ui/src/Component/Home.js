@@ -1,4 +1,5 @@
 import { Component } from "react";
+import {Route,Switch} from 'react-router-dom'
 import axios from 'axios';
 import ScrollOption from './ScrollOption';
 import ProductList from './ProductList';
@@ -13,7 +14,6 @@ class Home extends Component{
                         productRender : {},
                         processing : true
                     }
-
     }
 
     async componentDidMount(){
@@ -25,6 +25,7 @@ class Home extends Component{
                         processing : false
         })
 
+        console.log(response)
 
     }
 
@@ -36,8 +37,14 @@ class Home extends Component{
         else{
             return <div className='Home'>
                 <h1 className='Home__heading'>Our Products</h1>
-                <ScrollOption list={this.state.scrollRender}/>
-                <ProductList  list={this.state.productRender}/>
+
+                <ScrollOption  list={this.state.scrollRender}/>
+           
+                    <Switch>
+                        <Route exact path='/:name' component={(routeProps)=>{return <ProductList list={this.state.productRender} cat = {routeProps.match.params.name} option={this.state.scrollRender}/>}}/>
+                        <Route exact path='/' component={()=>{return <ProductList list={this.state.productRender} cat = {185} option={this.state.scrollRender} />}}/>
+                    </Switch>
+
              </div>
         }
          
