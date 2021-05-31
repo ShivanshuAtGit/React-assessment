@@ -48,7 +48,7 @@
   }
 
     .Scroll__cat,
-.Scroll__cat:link{
+    .Scroll__cat:link{
       height: 7.5rem;
       min-width: 11.5rem;
       font-size: 1.4rem;
@@ -63,7 +63,7 @@
     }
 
     .Scroll__cat,
-.Scroll__cat:link{
+    .Scroll__cat:link{
     height: 8rem;
     min-width: 12rem;
     font-size: 1.5rem;
@@ -75,7 +75,7 @@
       max-height: 15rem;
     }
     .Scroll__cat,
-.Scroll__cat:link{
+    .Scroll__cat:link{
     height: 8.5rem;
     min-width: 12.5rem;
     font-size: 1.6rem;
@@ -87,7 +87,7 @@
       max-height: 16rem;
     }
     .Scroll__cat,
-.Scroll__cat:link{
+    .Scroll__cat:link{
     height: 9rem;
     min-width: 13rem;
     font-size: 1.6rem;
