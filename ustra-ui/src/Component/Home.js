@@ -12,9 +12,14 @@ class Home extends Component{
         super(props);
         this.state = { scrollRender : {},
                         productRender : {},
-                        processing : true
+                        processing : true,
+                        arrId : [],
+                        arrName : []
                     }
+                    
     }
+ 
+  
 
     async componentDidMount(){
 
@@ -26,15 +31,20 @@ class Home extends Component{
         })
 
 
-        let arr=[];
-
+        let arrId=[],arrName =[];
         response.data.category_list.map((data)=>{
-                let id = data.category_id
-                arr.push([id , data.category_name]);
-            // console.log(data)
+                let id = data.category_id;
+                let name = data.category_name;
+                arrId.push(id);
+                arrName.push(name);   
         })
 
-        console.log(arr[0][0])
+        this.setState({
+            arrId : arrId,
+            arrName : arrName
+        })
+
+        // console.log(this.state.arrId,this.state.arrName)
 
     }
 
@@ -50,8 +60,24 @@ class Home extends Component{
                 <ScrollOption  list={this.state.scrollRender}/>
            
                     <Switch>
-                        <Route exact path='/:name' component={(routeProps)=>{return <ProductList list={this.state.productRender} cat = {routeProps.match.params.name} option={this.state.scrollRender}/>}}/>
-                        <Route exact path='/' component={()=>{return <ProductList list={this.state.productRender} cat = {185} option={this.state.scrollRender} />}}/>
+                        <Route exact path='/:name' component={(routeProps)=>{
+                            return <ProductList 
+                                        list={this.state.productRender} 
+                                        cat = {routeProps.match.params.name} 
+                                        option={this.state.scrollRender} 
+                                        arrId = {this.state.arrId}
+                                        arrName={this.state.arrName}
+                                    />} }/>
+
+                        <Route exact path='/' component={()=>{
+                            return <ProductList 
+                                        list={this.state.productRender} 
+                                        cat = {'185'} 
+                                        option={this.state.scrollRender} 
+                                        arrId = {this.state.arrId}
+                                        arrName={this.state.arrName}
+                                    />}}/>
+
                     </Switch>
 
              </div>

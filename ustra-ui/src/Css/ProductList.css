@@ -157,20 +157,16 @@
   } 
   
   .dd-menu li {
-    padding: 10px 20px;
+    padding: 10px 20px; 
     cursor: pointer;
     white-space: nowrap;
+    color: rgb(107, 107, 107);
   }
   
   .dd-menu li:hover {
     background-color: #f6f6f6;
   }
   
-
-  .link{
-      text-decoration: none;
-      color: rgb(107, 107, 107);
-  }
 
   .dd_select{
       color: black;

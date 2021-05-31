@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import '../Css/ProductList.css';
 
 class ProductList extends Component {
@@ -16,42 +16,36 @@ class ProductList extends Component {
             end: 3,
             catList: this.props.option,
             view: '[+] View More',
-            select : 'select'
+            select: 'sale'
         }
         this.handleJson = this.handleJson.bind(this);
         this.handleXml = this.handleXml.bind(this);
         this.handleView = this.handleView.bind(this);
-        this.handleLink = this.handleLink.bind(this);
+        this.handleLinkeEvent = this.handleLinkeEvent.bind(this)
     }
 
-    handleLink(e, id) {
-        console.log(id);
+    handleLinkeEvent(e, id) {
+        let elmnt = document.getElementById(`${id}`);
+        elmnt.scrollIntoView({ behavior: "smooth", block: "end", inline: "start" });
+        this.props.history.push(`/${id}`)
+               
     }
 
     handleView(e) {
 
-        if (this.state.end + 1 >= this.state.count) {
-            this.setState({
-                start: 0,
-                end: 3,
-                view: '[+] View More'
-            })
-        }
-        else {
-
-            if (this.state.end + 4 >= this.state.count) {
-                this.setState({
-                    view: '[-] View less'
-                })
-            }
-
-            this.setState({
-                start: this.state.start + 3,
-                end: this.state.end + 3
-            })
-
-        }
-
+      if(this.state.end === this.state.count)
+          this.setState({
+              start : 0,
+              end : 3,
+              view :'[+] View More'
+          })
+      else 
+      this.setState({
+        start : 0,
+        end : this.state.count,
+        view :'[-] View less'
+    })
+     
     }
 
     handleJson(response) {
@@ -61,9 +55,7 @@ class ProductList extends Component {
                 count: res.count,
                 isJson: true,
                 isProcessing: false,
-                
             })
-
         }
         )
     }
@@ -100,7 +92,6 @@ class ProductList extends Component {
 
             arr.push(obj);
         }
-        console.log(arr[1]);
 
         this.setState({
             xmlRes: arr,
@@ -111,10 +102,15 @@ class ProductList extends Component {
     }
 
 
-
-
     async componentDidMount() {
+        // category
+        const ind = this.props.arrId.indexOf(this.props.cat)
+        this.setState({
+            select: this.props.arrName[ind]
+        })
 
+
+        //  API fetch 
         const url = `https://backend.ustraa.com/rest/V1/api/catalog/v1.0.1?category_id=${this.props.cat}`;
 
         await fetch(url).then(res => {
@@ -130,13 +126,15 @@ class ProductList extends Component {
                 this.handleXml(data);
 
             }).catch(() => {
-                console.warn('mistake');
+                console.log('Json');
             })
 
     }
 
+
     render() {
 
+        /**  For Xml Api fetch render */
         if (!this.state.isJson) {
 
             if (this.state.isProcessing) {
@@ -147,7 +145,6 @@ class ProductList extends Component {
                 return <div className='List'>
 
                     {this.state.xmlRes.map((data, index) => {
-                        // return <div>{console.log(data)  }</div>;
                         if (index < this.state.end && index >= this.state.start)
                             return (<div className='List__items' key={data.id}>
 
@@ -156,9 +153,9 @@ class ProductList extends Component {
                                 </div>
 
                                 <div className='List__detail-block'>
-                                {data.rating !== undefined ? <span className='product__rating'>{data.rating.textContent} &#11088;</span>: <span></span> }
+                                    {data.rating !== undefined ? <span className='product__rating'>{data.rating.textContent} &#11088;</span> : <span></span>}
                                     <h2 className='product__name'>{data.name}</h2>
-                                    {data.weight !== '0' ? <p className='product__weigh'>{`(${data.weight} ${data.weight_unit})`}</p>: <span></span> }
+                                    {data.weight !== '0' ? <p className='product__weigh'>{`(${data.weight} ${data.weight_unit})`}</p> : <span></span>}
                                     <h3 className='product__mrp'>{`Rs. ${data.final_price}`}<span >{data.price}</span></h3>
                                     <button className='button'>ADD TO CART</button>
                                 </div>
@@ -166,32 +163,33 @@ class ProductList extends Component {
                             </div>)
                     })}
 
-                    
-<div className='bottom_wrapper'>
+
+                    {/* Bottom Component */}
+                    <div className='bottom_wrapper'>
                         <div className='dropdown'>
                             <div className='drop_show'>
                                 <span>Showing for</span>
 
 
                                 <label className="dropdown_label">
-                                <input type="checkbox" className="dd-input" id="test" />
+                                    <input type="checkbox" className="dd-input" id="test" />
 
                                     <ul className="dd-menu" >
                                         {this.state.catList.map((data) => {
-                                            return <li  value={data.category_id} key={data.category_id}>
-                                                <NavLink className='link' activeClassName='dd_select' to={`/${data.category_id}`}>{data.category_name}</NavLink>
+                                            return <li onClick={(e) => this.handleLinkeEvent(e, data.category_id)}
+                                                value={data.category_id}
+                                                key={data.category_id}
+                                                id={`${data.category_id}-0`}>
+                                                {data.category_name}
                                             </li >
                                         })}
                                     </ul>
 
                                     <div className="dd-button" id="test1">
-                                        select
-                                    </div>           
-
+                                        {this.state.select}
+                                    </div>
                                 </label>
-
                             </div>
-
                         </div>
 
                         <div className='view_wrapper'>
@@ -199,6 +197,7 @@ class ProductList extends Component {
                         </div>
 
                     </div>
+                    {/* Bottom Component */}
 
                 </div>
             }
@@ -207,6 +206,7 @@ class ProductList extends Component {
 
 
         else {
+            /** For Json return Data */
 
             if (this.state.isProcessing) {
                 return <p>processing....</p>
@@ -225,9 +225,9 @@ class ProductList extends Component {
                                 </div>
 
                                 <div className='List__detail-block'>
-                                    {data.rating !== undefined ? <span className='product__rating'>{data.rating} &#11088;</span>: <span></span> }
+                                    {data.rating !== undefined ? <span className='product__rating'>{data.rating} &#11088;</span> : <span></span>}
                                     <h2 className='product__name'>{data.name}</h2>
-                                    {data.weight !== 0 ? <p className='product__weigh'>{`(${data.weight} ${data.weight_unit})`}</p>: <span></span> }
+                                    {data.weight !== 0 ? <p className='product__weigh'>{`(${data.weight} ${data.weight_unit})`}</p> : <span></span>}
                                     <h3 className='product__mrp'>{`Rs. ${data.final_price}`}<span >{data.price}</span></h3>
                                     <button className='button'>ADD TO CART</button>
                                 </div>
@@ -235,6 +235,7 @@ class ProductList extends Component {
                             </div>)
                     })}
 
+                    {/* Bottom Component */}
                     <div className='bottom_wrapper'>
                         <div className='dropdown'>
                             <div className='drop_show'>
@@ -242,26 +243,25 @@ class ProductList extends Component {
 
 
                                 <label className="dropdown_label">
-                                <input type="checkbox" className="dd-input" id="test" />
+                                    <input type="checkbox" className="dd-input" id="test" />
 
                                     <ul className="dd-menu" >
                                         {this.state.catList.map((data) => {
-                                            return <li  value={data.category_id} key={data.category_id}>
-                                                <NavLink className='link' activeClassName='dd_select' to={`/${data.category_id}`}>{data.category_name}</NavLink>
+                                            return <li onClick={(e) => this.handleLinkeEvent(e, data.category_id)}
+                                                value={data.category_id}
+                                                key={data.category_id}
+                                                id={`${data.category_id}-0`}>
+                                                {data.category_name}
                                             </li >
                                         })}
                                     </ul>
 
                                     <div className="dd-button" id="test1">
-                                        select
-                                    </div>           
+                                        {this.state.select}
+                                    </div>
 
                                 </label>
-
                             </div>
-
-
-
                         </div>
 
                         <div className='view_wrapper'>
@@ -269,6 +269,7 @@ class ProductList extends Component {
                         </div>
 
                     </div>
+                    {/* Bottom Component */}
 
                 </div>
             }
@@ -277,4 +278,4 @@ class ProductList extends Component {
     }
 }
 
-export default ProductList;
+export default withRouter(ProductList);
